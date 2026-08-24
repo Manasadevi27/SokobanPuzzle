@@ -65,22 +65,21 @@ public class GridManager : MonoBehaviour
         return null;
     }
 
-    public bool IsTargetAt(Vector2Int position)
+    public TargetController GetTargetAt(Vector2Int position)
     {
-        GameObject[] targets =
-            GameObject.FindGameObjectsWithTag("Target");
+        TargetController[] targets =
+            FindObjectsByType<TargetController>(
+                FindObjectsSortMode.None
+            );
 
-        foreach (GameObject target in targets)
+        foreach (TargetController target in targets)
         {
-            Vector2Int targetPosition =
-                WorldToGrid(target.transform.position);
-
-            if (targetPosition == position)
+            if (target.GridPosition == position)
             {
-                return true;
+                return target;
             }
         }
 
-        return false;
+        return null;
     }
 }

@@ -122,6 +122,7 @@ public class PlayerMovement : MonoBehaviour
         }
 
         playerGridPosition = playerNextPosition;
+        GameManager.Instance.AddMove();
 
         targetPosition =
             GridManager.Instance.GridToWorld(
